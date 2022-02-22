@@ -40,14 +40,19 @@
 
 
 <div class="panel-body widget-shadow">
+
+  <button class="btn btn-info" type="button" data-toggle="modal" data-target="#addfaculty"> Add Faculty</button>
+  <br>
+  <br>
           
     <div class="table-responsive">
-      <table id="customers">
+       <table id="customers">
     <thead>
       <tr>
          <th>Serial</th>
          <th>Name</th>
           <th>Email</th>
+          <th>Designation</th>
           <th>Status</th>
          <th> Action</th>
          
@@ -63,6 +68,7 @@
                   <td>{{$i++}}</td>
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
+                  <td>{{$user->designation}}</td>
                   <td><?php 
                       if($user->status=="1"){
                         echo " <span style='color:green;'> Approved <span>";
@@ -114,6 +120,115 @@
 
 
 <!-- Modal -->
+<div class="modal modal-danger fade" id="addfaculty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Add Faculty</h4>
+      </div>
+      <form id="facultydata" method="post" enctype="multipart/form-data" data-parsley-validate>
+
+       
+           {{ csrf_field()}}
+       
+        <div class="modal-body">
+        <p class="text-center">
+       @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="designation" class="col-md-4 col-form-label text-md-end">{{ __('Designation') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="designation" type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" required autocomplete="designation">
+
+                                @error('designation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
+          <button type="submit" class="btn btn-warning">Yes, Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Modal -->
 <div class="modal modal-danger fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -121,9 +236,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title text-center" id="myModalLabel">Update Confirmation</h4>
       </div>
-      <form action="{{route('view_admin_update')}}" method="post">
+      <form action="{{route('faculty_page.update',0)}}" method="post">
 
-        
+        {{ method_field('put')}}
            {{ csrf_field()}}
        
         <div class="modal-body">
@@ -180,9 +295,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
       </div>
-      <form action="{{route('view_admin_delete')}}" method="post">
+      <form action="{{route('faculty_page.destroy',0)}}" method="post">
 
-         
+           {{ method_field('DELETE')}}
            {{ csrf_field()}}
        
         <div class="modal-body">
@@ -229,6 +344,53 @@
 
 
 </script>
+
+
+
+ <script type="text/javascript">
+       
+       $(document).ready(function(){
+
+
+   $('#facultydata').on('submit', function(event){
+  event.preventDefault();
+  
+  $.ajax({
+   url:"{{ route('faculty_page.store') }}",
+   method:"POST",
+   data:new FormData(this),
+   dataType:'JSON',
+   contentType: false,
+   cache: false,
+   processData: false,
+   success:function(data)
+   {
+  
+    if (data.message=="1") {
+      location.reload();
+    }else{
+      alert(data.message);
+    }
+    
+  
+   },error:function(){
+      alert(data.message);
+   }
+
+  });
+
+
+ });
+
+
+
+
+
+ });
+
+
+
+   </script>
 
 
 

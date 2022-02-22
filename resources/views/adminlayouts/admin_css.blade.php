@@ -37,6 +37,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--animate-->
 <link href="{{asset('admin/css/animate.css')}}" rel="stylesheet" type="text/css" media="all">
 <script src="{{asset('admin/js/wow.min.js')}}"></script>
+<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 	<script>
 		 new WOW().init();
 	</script>
@@ -78,11 +79,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 						<li>
-							<a href="{{route('admin_dashboard')}}" class="active"><i class="fa fa-home nav_icon"></i>Dashboard</a>
+							<a href="{{route('admin_dashboard')}}"><i class="fa fa-home nav_icon"></i>Dashboard</a>
 						</li>
 						
 						<li>
-							<a href="{{route('view_admin')}}" class="active"><i class="fa fa-home nav_icon"></i>View All Admin</a>
+							<a href="{{route('view_admin')}}"><i class="fa fa-user-md nav_icon"></i>View All Admin</a>
+						</li>
+
+
+						<li>
+							<a href="{{route('faculty_page.index')}}"><i class="fa fa-user nav_icon"></i>Faculty Page</a>
+						</li>
+
+
+						<li>
+							<a href="{{route('course_page.index')}}"><i class="fa fa-book nav_icon"></i>Course Page</a>
+						</li>
+
+							<li>
+							<a href="{{route('shift_page.index')}}"><i class="fa fa-book nav_icon"></i>Shift Page</a>
+						</li>
+
+
+						<li>
+							<a href="{{route('batch_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Batch Page</a>
+						</li>
+						
+                         <li>
+							<a href="{{route('question_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Question Page</a>
+						</li>
+
+						 <li>
+							<a href="{{route('teacher_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Teacher Page</a>
+						</li>
+						
+ 						<li>
+							<a href="{{route('student_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Student Page</a>
+						</li>
+
+
+						<li>
+							<a href="{{route('assign_teacher_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Assign Teacher Page</a>
+						</li>
+
+
+						<li>
+							<a href="{{route('admin_report')}}"><i class="fa fa-bookmark nav_icon"></i>Report</a>
 						</li>
 						
 

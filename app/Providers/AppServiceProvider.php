@@ -37,6 +37,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
+         view()->composer('layouts.student_header', function ($view) {
+            $data = DB::table('students')->where('id','=',session('LoggedStudent'))->first();
+            $view->data = $data;
+        });
+
+
 
     }
 }

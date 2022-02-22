@@ -40,15 +40,20 @@
 
 
 <div class="panel-body widget-shadow">
+
+  <button class="btn btn-info" type="button" data-toggle="modal" data-target="#addfaculty"> Add shift</button>
+          
+    
+  <br>
+  <br>
           
     <div class="table-responsive">
       <table id="customers">
+
     <thead>
       <tr>
          <th>Serial</th>
-         <th>Name</th>
-          <th>Email</th>
-          <th>Status</th>
+         <th>shift Name</th>
          <th> Action</th>
          
       </tr>
@@ -61,19 +66,10 @@
                      
                 <tr>
                   <td>{{$i++}}</td>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->email}}</td>
-                  <td><?php 
-                      if($user->status=="1"){
-                        echo " <span style='color:green;'> Approved <span>";
-                      }else{
-                          echo " <span style='color:red;'> Pending <span>";
-                      }
-
-                   ?></td> 
+                  <td>{{$user->shiftname}}</td>
 
                   
-                  <td><button type="button" class="btn btn-info" data-catid="{{$user->id}}" data-status="{{$user->status}}" data-name="{{$user->name}}" data-email="{{$user->email}}" data-toggle="modal" data-target="#update"><i class="far fa-trash-alt"></i> Update</button> || <button type="button" class="btn btn-danger" data-catid="{{$user->id}}" data-toggle="modal" data-target="#delete"><i class="far fa-trash-alt"></i> DELETE</button></td>
+                  <td><button type="button" class="btn btn-info" data-catid="{{$user->id}}" data-shiftname="{{$user->shiftname}}"  data-toggle="modal" data-target="#update"><i class="far fa-trash-alt"></i> Update</button> || <button type="button" class="btn btn-danger" data-catid="{{$user->id}}" data-toggle="modal" data-target="#delete"><i class="far fa-trash-alt"></i> DELETE</button></td>
                 
                   
                 </tr>
@@ -114,6 +110,66 @@
 
 
 <!-- Modal -->
+<div class="modal modal-danger fade" id="addfaculty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Add shift</h4>
+      </div>
+  <form id="shiftdata" method="post" enctype="multipart/form-data" data-parsley-validate>
+
+       
+           {{ csrf_field()}}
+       
+        <div class="modal-body">
+        <p class="text-center">
+       @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <div class="row mb-3">
+                            <label for="shiftname" class="col-md-4 col-form-label text-md-end">{{ __('shiftname') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="shiftname" type="text" class="form-control @error('shiftname') is-invalid @enderror" name="shiftname" value="{{ old('shiftname') }}" required autocomplete="shiftname" autofocus>
+
+                                @error('shiftname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        
+
+          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">No, Cancel</button>
+          <button type="submit" class="btn btn-warning">Yes, Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Modal -->
 <div class="modal modal-danger fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -121,9 +177,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title text-center" id="myModalLabel">Update Confirmation</h4>
       </div>
-      <form action="{{route('view_admin_update')}}" method="post">
+      <form action="{{route('shift_page.update',0)}}" method="post">
 
-        
+        {{ method_field('put')}}
            {{ csrf_field()}}
        
         <div class="modal-body">
@@ -133,27 +189,12 @@
             <input type="hidden" name="id" id="cat_id" value="">
 
              <div class="form-group">
-              <label for="title1">Name</label>
-             <input type="text" class="form-control" id="name" name="name" maxlength="50" value="" placeholder="Name"> 
+              <label for="title1">shift name</label>
+             <input type="text" class="form-control" id="shiftname" name="shiftname" maxlength="50" value="" placeholder="shift name"> 
 
           </div>
 
-           <div class="form-group">
-              <label for="title1">Email</label>
-             <input type="text" class="form-control" id="email" name="email" maxlength="50" value="" placeholder="Email"> 
-
-          </div>
-
-           <div class="form-group">
-              <label for="title1">Status</label>
-             <select name="status" id="status" class="form-control">
-              <option value="0">Pending</option>
-              <option value="1">Approved</option>
-               
-             </select>
-
-          </div>
-
+          
           
 
         </div>
@@ -180,9 +221,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
       </div>
-      <form action="{{route('view_admin_delete')}}" method="post">
+      <form action="{{route('shift_page.destroy',0)}}" method="post">
 
-         
+           {{ method_field('DELETE')}}
            {{ csrf_field()}}
        
         <div class="modal-body">
@@ -216,19 +257,62 @@
   $('#update').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) 
       var cat_id = button.data('catid'); 
-      var name = button.data('name');
-      var email = button.data('email'); 
-      var status = button.data('status'); 
+      var shiftname = button.data('shiftname');
       var modal = $(this)
       modal.find('.modal-body #cat_id').val(cat_id);
-      modal.find('.modal-body #name').val(name);
-      modal.find('.modal-body #email').val(email);
-      modal.find('.modal-body #status').val(status);
+      modal.find('.modal-body #shiftname').val(shiftname);
 })
 
 
 
 </script>
+
+
+
+ <script type="text/javascript">
+       
+       $(document).ready(function(){
+
+
+   $('#shiftdata').on('submit', function(event){
+  event.preventDefault();
+  
+  $.ajax({
+   url:"{{ route('shift_page.store') }}",
+   method:"POST",
+   data:new FormData(this),
+   dataType:'JSON',
+   contentType: false,
+   cache: false,
+   processData: false,
+   success:function(data)
+   {
+  
+    if (data.message=="1") {
+      location.reload();
+    }else{
+      alert(data.message);
+    }
+    
+  
+   },error:function(){
+      alert(data.message);
+   }
+
+  });
+
+
+ });
+
+
+
+
+
+ });
+
+
+
+   </script>
 
 
 

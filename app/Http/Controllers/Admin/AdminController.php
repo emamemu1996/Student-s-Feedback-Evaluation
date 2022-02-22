@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
@@ -134,6 +135,18 @@ class AdminController extends Controller
     {
      $userinfo = ['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
       return view('admin.dashboard',$userinfo); 
+        
+    }
+
+
+
+  public function admin_report()
+    {
+     $feedbackdata = DB::table('feedback')
+     ->join('teacher_name', 'teacher_name.id', '=', 'feedback.teacherid')
+     ->select('teacher_name.name as tname','feedback.*')
+        ->paginate(30);
+      return view('admin.admin_report',compact('feedbackdata')); 
         
     }
 

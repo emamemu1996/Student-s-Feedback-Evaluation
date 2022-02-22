@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class adminauth
+class studentauth
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class adminauth
     public function handle(Request $request, Closure $next)
     {
 
-        if (!session()->has('LoggedUser') && $request->path() !="admin_login" && $request->path() !="admin_register") {
-            return redirect()->route('admin_login')->with('error','You must login first');
+        if (!session()->has('LoggedStudent') && $request->path() !="student_login" && $request->path() !="student_register") {
+            return redirect()->route('student_login')->with('error','You must login first');
         }
 
 
-        if (session()->has('LoggedUser') && $request->path() =="admin_login" && $request->path() =="admin_register") {
+        if (session()->has('LoggedStudent') && $request->path() =="student_login" && $request->path() =="student_register") {
             return back();
         }
 
