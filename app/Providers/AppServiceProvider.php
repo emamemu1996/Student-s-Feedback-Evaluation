@@ -40,6 +40,17 @@ class AppServiceProvider extends ServiceProvider
          view()->composer('layouts.student_header', function ($view) {
             $data = DB::table('students')->where('id','=',session('LoggedStudent'))->first();
             $view->data = $data;
+        }); 
+
+         view()->composer('layouts.teacher_header', function ($view) {
+            $data = DB::table('teacher_name')->where('id','=',session('LoggedTeacher'))->first();
+            $view->data = $data;
+        });
+      
+
+      view()->composer('layouts.faculty_header', function ($view) {
+            $data = DB::table('faculty')->where('id','=',session('LoggedFaculty'))->first();
+            $view->data = $data;
         });
 
 

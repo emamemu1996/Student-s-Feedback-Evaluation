@@ -47,12 +47,26 @@
           
     <div class="table-responsive">
 
-     <table id="customers">
+      <style type="text/css">
+  #numrows{
+    width: 100px;
+  } 
+  #filter_by{
+    width: 150px;
+    float: right;
+    margin-bottom: 5px;
+  }
+  #filter_input{
+    margin-bottom: 5px;
+  }
+</style>
+
+     <table id="customers" class="tablemanager">
     <thead>
       <tr>
-         <th>Serial</th>
-         <th>Course Name</th>
-         <th> Action</th>
+         <th >Serial <i class="fa fa-sort"></i></th>
+         <th>Course Name <i class="fa fa-sort"></i></th>
+         <th class="disableSort"> Action</th>
          
       </tr>
     </thead>
@@ -79,9 +93,7 @@
 
 
    </table>  
-           <div class="d-flex justify-content-center">
-                {!! $users->appends(['sort' => 'science-stream'])->links() !!}
-            </div>  
+           
 </div>
 
 

@@ -43,39 +43,19 @@
 
  <!--  <button class="btn btn-info" type="button" data-toggle="modal" data-target="#addfaculty"> Add question</button> -->
 
-<style type="text/css">
-  #numrows{
-    width: 100px;
-  } 
-  #filter_by{
-    width: 150px;
-    float: right;
-    margin-bottom: 5px;
-  }
-  #filter_input{
-    margin-bottom: 5px;
-  }
-</style>
+
 
   <br>
   <br>
           
     <div class="table-responsive">
-      <table id="customers" class="tablemanager">
+      <table id="customers">
     <thead>
       <tr>
-         <th>Serial <i class="fa fa-sort"></i></th>
-         <th>Teacher Name <i class="fa fa-sort"></i></th>
-         <th>Department <i class="fa fa-sort"></i></th>
-         <th>Batch <i class="fa fa-sort"></i></th>
-         <th>Shift <i class="fa fa-sort"></i></th>
-         <th>Course <i class="fa fa-sort"></i></th>
-         <th>Total performance <i class="fa fa-sort"></i></th>
-         <th class="disableSort">Details</th>
-         <th>Total Student <i class="fa fa-sort"></i></th>
+         <th>Serial</th>
          @foreach($questiondata as $question)
 
-           <th>{{$question->questionname}} <i class="fa fa-sort"></i> </th>
+           <th>{{$question->questionname}}</th>
 
 
          @endforeach
@@ -90,14 +70,6 @@
                      
                 <tr>
                   <td>{{$i++}}</td>
-                  <td>{{$feedback->tname}}</td>
-                  <td>{{$feedback->department}}</td>
-                  <td>{{$feedback->batch}}</td>
-                  <td>{{$feedback->shift}}</td>
-                  <td>{{$feedback->course}}</td>
-                  <td>{{(($feedback->tone*100)/(5*$feedback->tstudent)+($feedback->ttwo*100)/(5*$feedback->tstudent)+($feedback->tthree*100)/(5*$feedback->tstudent)+($feedback->tfour*100)/(5*$feedback->tstudent)+($feedback->tfive*100)/(5*$feedback->tstudent)+($feedback->tsix*100)/(5*$feedback->tstudent)+($feedback->tseven*100)/(5*$feedback->tstudent)+($feedback->teight*100)/(5*$feedback->tstudent)+($feedback->tnine*100)/(5*$feedback->tstudent)+($feedback->tten*100)/(5*$feedback->tstudent))/10}} %</td>
-                  <td> <a href="{{route('report_details',$feedback->tid)}}" class="btn btn-success">Details</a> </td>
-                  <td>{{$feedback->tstudent}}</td>
                   <td>{{($feedback->tone*100)/(5*$feedback->tstudent)}} %</td>
                   <td>{{($feedback->ttwo*100)/(5*$feedback->tstudent)}} %</td>
                   <td>{{($feedback->tthree*100)/(5*$feedback->tstudent)}} %</td>
@@ -122,7 +94,7 @@
 
 
    </table>  
-           
+            
 </div>
 
 

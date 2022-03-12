@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/admin_send_password', [App\Http\Controllers\HomeController::class, 'admin_send_password'])->name('admin_send_password');
 
 
 Route::post('/admin_login_submit', [App\Http\Controllers\Admin\AdminController::class, 'admin_login_submit'])->name('admin_login_submit');
@@ -34,12 +35,42 @@ Route::post('/student_login_submit', [App\Http\Controllers\Student\Student_Login
 
 Route::get('/student_logout', [App\Http\Controllers\Student\Student_LoginController::class, 'student_logout'])->name('student_logout');
 
+Route::post('/teacher_login_submit', [App\Http\Controllers\Teacher\TeacherController::class, 'teacher_login_submit'])->name('teacher_login_submit');
+Route::post('/faculty_login_submit', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_login_submit'])->name('faculty_login_submit');
+Route::get('/faculty_logout', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_logout'])->name('faculty_logout');
+
+Route::get('/teacher_logout', [App\Http\Controllers\Teacher\TeacherController::class, 'teacher_logout'])->name('teacher_logout');
+
 Route::group(['middleware'=>['studentauth']], function(){
 //student_Auth
 Route::get('student_dash', [App\Http\Controllers\Student\Student_LoginController::class, 'student_dash'])->name('student_dash');
 Route::get('student_login', [App\Http\Controllers\Student\Student_LoginController::class, 'student_login'])->name('student_login');
 Route::resource('/feedback', App\Http\Controllers\Student\FeedbackController::class);
+Route::get('student_profile', [App\Http\Controllers\Student\Student_LoginController::class, 'student_profile'])->name('student_profile');
+ Route::post('student_profile_update', [App\Http\Controllers\Student\Student_LoginController::class, 'student_profile_update'])->name('student_profile_update');
 
+
+});
+
+
+Route::group(['middleware'=>['teacherauth']], function(){
+//student_Auth
+Route::get('teacher_dash', [App\Http\Controllers\Teacher\TeacherController::class, 'teacher_dash'])->name('teacher_dash');
+Route::get('teacher_login', [App\Http\Controllers\Teacher\TeacherController::class, 'teacher_login'])->name('teacher_login');
+Route::get('teacher_profile', [App\Http\Controllers\Teacher\TeacherController::class, 'teacher_profile'])->name('teacher_profile');
+ Route::post('teacher_profile_update', [App\Http\Controllers\Teacher\TeacherController::class, 'teacher_profile_update'])->name('teacher_profile_update');
+
+
+});
+
+
+Route::group(['middleware'=>['facultyauth']], function(){
+//student_Auth
+Route::get('faculty_dash', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_dash'])->name('faculty_dash');
+Route::get('faculty_login', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_login'])->name('faculty_login');
+Route::get('faculty_profile', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_profile'])->name('faculty_profile');
+ Route::post('faculty_profile_update', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_profile_update'])->name('faculty_profile_update');
+  Route::get('faculty_report_details/{tid}', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_report_details'])->name('faculty_report_details');
 
 
 });
@@ -76,4 +107,6 @@ Route::group(['middleware'=>['adminauth']], function(){
        Route::resource('/assign_teacher_page', App\Http\Controllers\Admin\Assign_Teacher_Controller::class);
 
        Route::get('admin_report', [App\Http\Controllers\Admin\AdminController::class, 'admin_report'])->name('admin_report');
+       Route::get('report_details/{tid}', [App\Http\Controllers\Admin\AdminController::class, 'report_details'])->name('report_details');
+       Route::get('all_question_report', [App\Http\Controllers\Admin\AdminController::class, 'all_question_report'])->name('all_question_report');
 });

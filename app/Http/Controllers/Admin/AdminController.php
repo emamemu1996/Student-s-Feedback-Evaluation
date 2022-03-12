@@ -142,11 +142,56 @@ class AdminController extends Controller
 
   public function admin_report()
     {
-     $feedbackdata = DB::table('feedback')
-     ->join('teacher_name', 'teacher_name.id', '=', 'feedback.teacherid')
-     ->select('teacher_name.name as tname','feedback.*')
-        ->paginate(30);
-      return view('admin.admin_report',compact('feedbackdata')); 
+      $feedbackdata = DB::table('teacher_name')
+            ->join('feedback', 'feedback.teacherid', '=', 'teacher_name.id')
+            ->select('feedback.*','teacher_name.name as tname','teacher_name.id as tid', DB::raw('SUM(feedback.one) as tone'), DB::raw('SUM(feedback.two) as ttwo'), DB::raw('SUM(feedback.three) as tthree'), DB::raw('SUM(feedback.four) as tfour'), DB::raw('SUM(feedback.five) as tfive'), DB::raw('SUM(feedback.six) as tsix'), DB::raw('SUM(feedback.seven) as tseven'), DB::raw('SUM(feedback.eight) as teight'), DB::raw('SUM(feedback.nine) as tnine'), DB::raw('SUM(feedback.ten) as tten'), DB::raw('count(*) as tstudent'))
+            ->groupBy('feedback.teacherid')
+            ->get();
+        $questiondata = DB::table('question')->orderBy('id','asc')->limit(10)->get();
+      return view('admin.admin_report',compact('feedbackdata','questiondata')); 
+        
+    }
+
+
+
+  public function report_details($tid)
+    {
+        if (isset($_GET['batch'])) {
+            $checkdata = DB::table('feedback')->where('teacherid',$tid)
+            ->where('batch',$_GET["batch"])->first();
+            if ($checkdata) {
+                $feedbackdata = DB::table('feedback')
+            ->select('feedback.*', DB::raw('SUM(one) as tone'), DB::raw('SUM(two) as ttwo'), DB::raw('SUM(three) as tthree'), DB::raw('SUM(four) as tfour'), DB::raw('SUM(five) as tfive'), DB::raw('SUM(six) as tsix'), DB::raw('SUM(seven) as tseven'), DB::raw('SUM(eight) as teight'), DB::raw('SUM(nine) as tnine'), DB::raw('SUM(ten) as tten'), DB::raw('count(*) as tstudent'))
+            ->where('teacherid',$tid)
+            ->where('batch',$_GET["batch"])
+            ->get();
+            }else{
+               return redirect()->back()->with('error', ' this batch data did not found');
+            }
+            
+        }else{
+            $feedbackdata = DB::table('feedback')
+            ->select('feedback.*', DB::raw('SUM(one) as tone'), DB::raw('SUM(two) as ttwo'), DB::raw('SUM(three) as tthree'), DB::raw('SUM(four) as tfour'), DB::raw('SUM(five) as tfive'), DB::raw('SUM(six) as tsix'), DB::raw('SUM(seven) as tseven'), DB::raw('SUM(eight) as teight'), DB::raw('SUM(nine) as tnine'), DB::raw('SUM(ten) as tten'), DB::raw('count(*) as tstudent'))
+            ->where('teacherid',$tid)
+            ->get();
+        }
+      
+        $questiondata = DB::table('question')->orderBy('id','asc')->limit(10)->get();
+        $teachers = DB::table('teacher_name')->where('id',$tid)->get();
+         $batchdata = DB::table('batch')->orderBy('id','asc')->get();
+      return view('admin.report_details',compact('feedbackdata','questiondata','teachers','batchdata')); 
+        
+    }
+
+
+
+  public function all_question_report()
+    {
+      $feedbackdata = DB::table('feedback')
+            ->select('feedback.*', DB::raw('SUM(one) as tone'), DB::raw('SUM(two) as ttwo'), DB::raw('SUM(three) as tthree'), DB::raw('SUM(four) as tfour'), DB::raw('SUM(five) as tfive'), DB::raw('SUM(six) as tsix'), DB::raw('SUM(seven) as tseven'), DB::raw('SUM(eight) as teight'), DB::raw('SUM(nine) as tnine'), DB::raw('SUM(ten) as tten'), DB::raw('count(*) as tstudent'))
+            ->get();
+        $questiondata = DB::table('question')->orderBy('id','asc')->limit(10)->get();
+      return view('admin.all_question_report',compact('feedbackdata','questiondata')); 
         
     }
 

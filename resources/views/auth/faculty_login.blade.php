@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Student {{ __('Login') }}</div>
+                <div class="card-header">{{ __('Login') }}</div>
 
                   @if (session('status'))
                     <div class="alert alert-success">
@@ -18,7 +18,7 @@
                 @endif
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('student_login_submit') }}">
+                    <form method="POST" action="{{ route('faculty_login_submit') }}">
                         @csrf
 
                         @if ($errors->any())
@@ -32,42 +32,12 @@
                         @endif
 
                         <div class="row mb-3">
-                            <label for="Registration Number" class="col-md-4 col-form-label text-md-end">{{ __('Registration Number') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="Registration Number" type="text" class="form-control @error('Registration Number') is-invalid @enderror" name="regi" value="{{ old('Registration Number') }}" required autocomplete="Registration Number" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('Registration Number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                          <div class="row mb-3">
-                            <label for="Batch" class="col-md-4 col-form-label text-md-end">{{ __('batch') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="batch" type="text" class="form-control @error('Batch') is-invalid @enderror" name="batch" value="{{ old('Batch') }}" required autocomplete="Batch" autofocus>
-
-                                @error('Batch')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-                          <div class="row mb-3">
-                            <label for="Shift" class="col-md-4 col-form-label text-md-end">{{ __('Shift') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="shift" type="text" class="form-control @error('shift') is-invalid @enderror" name="shift" value="{{ old('shift') }}" required autocomplete="shift" autofocus>
-
-                                @error('shift')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -92,7 +62,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
@@ -117,7 +87,7 @@
                             <br>
                             <br>
 
-                           
+                          
                         </div>
                     </form>
                 </div>

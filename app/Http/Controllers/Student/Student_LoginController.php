@@ -25,7 +25,32 @@ class Student_LoginController extends Controller
     }
 
 
-   public function student_login()
+   public function student_profile()
+    {
+      $data = DB::table('students')->where('id','=',session('LoggedStudent'))->get();
+      return view('student/student_profile',compact('data')); 
+        
+    }
+
+
+
+    public function student_profile_update(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'number' => 'required'
+          ]);
+
+
+        $updateprofile = StudentModel::find($request->id);
+        $updateprofile->name = $request->name;
+        $updateprofile->phone = $request->number;
+        $updateprofile->update();
+
+        return redirect()->back()->with('status', ' Update success');
+
+    }
+
+ public function student_login()
     {
 
       return view('auth/student_login'); 

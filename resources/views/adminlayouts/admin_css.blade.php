@@ -97,34 +97,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</li>
 
 							<li>
-							<a href="{{route('shift_page.index')}}"><i class="fa fa-book nav_icon"></i>Shift Page</a>
+							<a href="{{route('shift_page.index')}}"><i class="fa fa-heart nav_icon"></i>Shift Page</a>
 						</li>
 
 
 						<li>
-							<a href="{{route('batch_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Batch Page</a>
+							<a href="{{route('batch_page.index')}}"><i class="fa fa-star nav_icon"></i>Batch Page</a>
 						</li>
 						
                          <li>
-							<a href="{{route('question_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Question Page</a>
+							<a href="{{route('question_page.index')}}"><i class="fa fa-gear nav_icon"></i>Question Page</a>
 						</li>
 
 						 <li>
-							<a href="{{route('teacher_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Teacher Page</a>
+							<a href="{{route('teacher_page.index')}}"><i class="fa fa-tag nav_icon"></i>Teacher Page</a>
 						</li>
 						
  						<li>
-							<a href="{{route('student_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Student Page</a>
+							<a href="{{route('student_page.index')}}"><i class="fa fa-road nav_icon"></i>Student Page</a>
 						</li>
 
 
 						<li>
-							<a href="{{route('assign_teacher_page.index')}}"><i class="fa fa-bookmark nav_icon"></i>Assign Teacher Page</a>
+							<a href="{{route('assign_teacher_page.index')}}"><i class="fa fa-pencil nav_icon"></i>Assign Teacher Page</a>
 						</li>
 
 
 						<li>
-							<a href="{{route('admin_report')}}"><i class="fa fa-bookmark nav_icon"></i>Report</a>
+							<a href="{{route('admin_report')}}"><i class="fa fa-signal nav_icon"></i>Report</a>
+						</li>
+						
+
+						<li>
+							<a href="{{route('all_question_report')}}"><i class="fa fa-bookmark nav_icon"></i>Question Report</a>
 						</li>
 						
 

@@ -12,7 +12,11 @@
      
           <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
             <div class="form-title">
-              <h4>View User:</h4>
+              @foreach($teachers as $teacher)
+                Name: {{$teacher->name}}
+
+
+              @endforeach
             </div>
 
 
@@ -38,8 +42,28 @@
     </div>
 @endif
 
+<br>
+<form method="get">
+  <select class="form-control" name="batch" style="width:50%;float: left;margin-left: 10px;">
+      <option value="">Select batch</option>
+    @foreach($batchdata as $batch)
+               <option value="{{$batch->batchname}}">{{$batch->batchname}}</option>
 
-<div class="panel-body widget-shadow">
+
+              @endforeach
+  </select>
+
+  <button type="submit" class="btn btn-info" style="margin-left: 10px;">search</button>
+  
+</form>
+
+<br>
+
+  @if(isset($_GET['batch']))
+
+      <p style="text-align: center;"> Your Select batch: {{$_GET['batch']}}</p>
+
+  @endif
 
  <!--  <button class="btn btn-info" type="button" data-toggle="modal" data-target="#addfaculty"> Add question</button> -->
 
@@ -61,21 +85,15 @@
   <br>
           
     <div class="table-responsive">
-      <table id="customers" class="tablemanager">
+      <table id="customers">
     <thead>
       <tr>
-         <th>Serial <i class="fa fa-sort"></i></th>
-         <th>Teacher Name <i class="fa fa-sort"></i></th>
-         <th>Department <i class="fa fa-sort"></i></th>
-         <th>Batch <i class="fa fa-sort"></i></th>
-         <th>Shift <i class="fa fa-sort"></i></th>
-         <th>Course <i class="fa fa-sort"></i></th>
-         <th>Total performance <i class="fa fa-sort"></i></th>
-         <th class="disableSort">Details</th>
-         <th>Total Student <i class="fa fa-sort"></i></th>
+         
+         <th>Total performance</th>
+         <th>Total Student </th>
          @foreach($questiondata as $question)
 
-           <th>{{$question->questionname}} <i class="fa fa-sort"></i> </th>
+           <th>{{$question->questionname}}  </th>
 
 
          @endforeach
@@ -89,14 +107,7 @@
                     @foreach($feedbackdata as $feedback)
                      
                 <tr>
-                  <td>{{$i++}}</td>
-                  <td>{{$feedback->tname}}</td>
-                  <td>{{$feedback->department}}</td>
-                  <td>{{$feedback->batch}}</td>
-                  <td>{{$feedback->shift}}</td>
-                  <td>{{$feedback->course}}</td>
                   <td>{{(($feedback->tone*100)/(5*$feedback->tstudent)+($feedback->ttwo*100)/(5*$feedback->tstudent)+($feedback->tthree*100)/(5*$feedback->tstudent)+($feedback->tfour*100)/(5*$feedback->tstudent)+($feedback->tfive*100)/(5*$feedback->tstudent)+($feedback->tsix*100)/(5*$feedback->tstudent)+($feedback->tseven*100)/(5*$feedback->tstudent)+($feedback->teight*100)/(5*$feedback->tstudent)+($feedback->tnine*100)/(5*$feedback->tstudent)+($feedback->tten*100)/(5*$feedback->tstudent))/10}} %</td>
-                  <td> <a href="{{route('report_details',$feedback->tid)}}" class="btn btn-success">Details</a> </td>
                   <td>{{$feedback->tstudent}}</td>
                   <td>{{($feedback->tone*100)/(5*$feedback->tstudent)}} %</td>
                   <td>{{($feedback->ttwo*100)/(5*$feedback->tstudent)}} %</td>
@@ -126,8 +137,7 @@
 </div>
 
 
-          
-          </div>      
+        
 
 
 

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Student ! Student’s Feedback Evaluation</title>
+    <title>Faculty ! Student’s Feedback Evaluation</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,8 +24,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('student_dash') }}">
-                   Student ! Student’s Feedback Evaluation
+                <a class="navbar-brand" href="{{ route('faculty_dash') }}">
+                   Faculty ! Student’s Feedback Evaluation
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -54,13 +54,13 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
 
-                         <a href="{{ route('student_profile') }}"></i> 
+                         <a href="{{ route('faculty_profile') }}"></i> 
                                         profile  </a> 
 
                                         <br>
 
 
-                         <a href="{{ route('student_logout') }}"> <i class="fa fa-cog"></i> 
+                         <a href="{{ route('faculty_logout') }}"> <i class="fa fa-cog"></i> 
                                         {{ __('Logout') }}  </a>
 
                                  

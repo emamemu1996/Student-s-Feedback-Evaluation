@@ -13,7 +13,7 @@ class CourseController extends Controller
 
      public function index()
     {
-        $users = DB::table('course')->orderBy('id','desc')->paginate(30);
+        $users = DB::table('course')->orderBy('id','desc')->get();
         return view('admin/course_page',compact('users'));
     }
 

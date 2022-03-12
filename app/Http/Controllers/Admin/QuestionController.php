@@ -10,7 +10,7 @@ class QuestionController extends Controller
 {
      public function index()
     {
-        $users = DB::table('question')->orderBy('id','desc')->paginate(30);
+        $users = DB::table('question')->orderBy('id','asc')->paginate(30);
         return view('admin/question_page',compact('users'));
     }
 

@@ -1,24 +1,16 @@
+@extends('layouts.faculty_header')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+              
 
 
-@include('adminlayouts.admin_css')
 
 
-
-
-  <!-- main content start-->
-    <div id="page-wrapper">
-      <div class="main-page">
-        <div class="forms">
-     
-          <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
-            <div class="form-title">
-              <h4>View User:</h4>
-            </div>
-
-
-            
-        
-                       @if (session('status'))
+   @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
@@ -96,7 +88,7 @@
                   <td>{{$feedback->shift}}</td>
                   <td>{{$feedback->course}}</td>
                   <td>{{(($feedback->tone*100)/(5*$feedback->tstudent)+($feedback->ttwo*100)/(5*$feedback->tstudent)+($feedback->tthree*100)/(5*$feedback->tstudent)+($feedback->tfour*100)/(5*$feedback->tstudent)+($feedback->tfive*100)/(5*$feedback->tstudent)+($feedback->tsix*100)/(5*$feedback->tstudent)+($feedback->tseven*100)/(5*$feedback->tstudent)+($feedback->teight*100)/(5*$feedback->tstudent)+($feedback->tnine*100)/(5*$feedback->tstudent)+($feedback->tten*100)/(5*$feedback->tstudent))/10}} %</td>
-                  <td> <a href="{{route('report_details',$feedback->tid)}}" class="btn btn-success">Details</a> </td>
+                  <td> <a href="{{route('faculty_report_details',$feedback->tid)}}" class="btn btn-success">Details</a> </td>
                   <td>{{$feedback->tstudent}}</td>
                   <td>{{($feedback->tone*100)/(5*$feedback->tstudent)}} %</td>
                   <td>{{($feedback->ttwo*100)/(5*$feedback->tstudent)}} %</td>
@@ -137,41 +129,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-      </div>
+        </div>
     </div>
-
-
-
-
-   @include('adminlayouts.admin_js')
+</div>
+@endsection
