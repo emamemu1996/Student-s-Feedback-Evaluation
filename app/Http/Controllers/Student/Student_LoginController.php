@@ -52,8 +52,9 @@ class Student_LoginController extends Controller
 
  public function student_login()
     {
-
-      return view('auth/student_login'); 
+        $batchdata = DB::table('batch')->orderBy('id','asc')->get();
+        $shiftdata = DB::table('shift')->orderBy('id','asc')->get();
+      return view('auth/student_login',compact('batchdata','shiftdata')); 
         
     }
 

@@ -5,6 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+
+              @if($dataval=="0")
+
+                   <div class="alert alert-danger">
+                        No data found
+                    </div>
+
+              @else
                 @foreach($teachers as $teacher)
               
                 <div class="card-header">{{$teacher->name}} {{ __('Dashboard') }}</div>
@@ -41,6 +49,8 @@
         </ul>
     </div>
 @endif
+
+
 
 <br>
 <form method="get">
@@ -138,7 +148,7 @@
 
                    
 
-
+@endif
                     
                 </div>
             </div>

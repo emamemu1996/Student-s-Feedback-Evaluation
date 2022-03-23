@@ -17,6 +17,7 @@ class StudentModel extends Model
         'department',
         'batch',
         'phone',
+        'email',
         'shift',
         'status',
         'type',

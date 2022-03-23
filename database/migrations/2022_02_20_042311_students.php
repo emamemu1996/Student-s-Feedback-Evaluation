@@ -22,6 +22,7 @@ class Students extends Migration
             $table->string('department');
             $table->string('batch');
             $table->string('phone');
+            $table->string('email');
             $table->string('shift');
             $table->string('status')->default(0);
             $table->string('type')->default(0);

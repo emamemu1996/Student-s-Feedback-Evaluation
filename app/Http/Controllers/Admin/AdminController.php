@@ -134,7 +134,13 @@ class AdminController extends Controller
   public function admin_dashboard()
     {
      $userinfo = ['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
-      return view('admin.dashboard',$userinfo); 
+     $students = DB::table('students')->where('status','1')->count();
+     $teacher_name = DB::table('teacher_name')->where('status','1')->count();
+     $faculty = DB::table('faculty')->where('status','1')->count();
+     $shift = DB::table('shift')->count();
+     $batch = DB::table('batch')->count();
+     $course = DB::table('course')->count();
+      return view('admin.dashboard',compact('userinfo','students','teacher_name','faculty','shift','batch','course')); 
         
     }
 

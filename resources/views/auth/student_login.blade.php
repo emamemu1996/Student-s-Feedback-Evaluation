@@ -49,7 +49,17 @@
                             <label for="Batch" class="col-md-4 col-form-label text-md-end">{{ __('batch') }}</label>
 
                             <div class="col-md-6">
-                                <input id="batch" type="text" class="form-control @error('Batch') is-invalid @enderror" name="batch" value="{{ old('Batch') }}" required autocomplete="Batch" autofocus>
+                                <select id="batch" type="text" class="form-control @error('Batch') is-invalid @enderror" name="batch" value="{{ old('Batch') }}" required autocomplete="Batch" autofocus>
+                                    <option value="">Select Batch</option>
+                                      @foreach($batchdata as $bat)
+
+                                      <option value="{{$bat->batchname}}">{{$bat->batchname}}</option>
+                                       
+
+                                       @endforeach
+
+
+                                </select>
 
                                 @error('Batch')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +75,16 @@
                             <label for="Shift" class="col-md-4 col-form-label text-md-end">{{ __('Shift') }}</label>
 
                             <div class="col-md-6">
-                                <input id="shift" type="text" class="form-control @error('shift') is-invalid @enderror" name="shift" value="{{ old('shift') }}" required autocomplete="shift" autofocus>
+                                <select id="shift" type="text" class="form-control @error('shift') is-invalid @enderror" name="shift" value="{{ old('shift') }}" required autocomplete="shift" autofocus>
+                                    <option value="">Select Semester</option>
+                                     @foreach($shiftdata as $shif)
+
+                                  <option value="{{$shif->shiftname}}">{{$shif->shiftname}}</option>
+                                   
+
+                                   @endforeach
+
+                                </select>
 
                                 @error('shift')
                                     <span class="invalid-feedback" role="alert">

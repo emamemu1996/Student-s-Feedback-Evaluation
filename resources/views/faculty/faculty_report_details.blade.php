@@ -107,18 +107,18 @@
                     @foreach($feedbackdata as $feedback)
                      
                 <tr>
-                  <td>{{(($feedback->tone*100)/(5*$feedback->tstudent)+($feedback->ttwo*100)/(5*$feedback->tstudent)+($feedback->tthree*100)/(5*$feedback->tstudent)+($feedback->tfour*100)/(5*$feedback->tstudent)+($feedback->tfive*100)/(5*$feedback->tstudent)+($feedback->tsix*100)/(5*$feedback->tstudent)+($feedback->tseven*100)/(5*$feedback->tstudent)+($feedback->teight*100)/(5*$feedback->tstudent)+($feedback->tnine*100)/(5*$feedback->tstudent)+($feedback->tten*100)/(5*$feedback->tstudent))/10}} %</td>
+                  <td>{{round((($feedback->tone*100)/(5*$feedback->tstudent)+($feedback->ttwo*100)/(5*$feedback->tstudent)+($feedback->tthree*100)/(5*$feedback->tstudent)+($feedback->tfour*100)/(5*$feedback->tstudent)+($feedback->tfive*100)/(5*$feedback->tstudent)+($feedback->tsix*100)/(5*$feedback->tstudent)+($feedback->tseven*100)/(5*$feedback->tstudent)+($feedback->teight*100)/(5*$feedback->tstudent)+($feedback->tnine*100)/(5*$feedback->tstudent)+($feedback->tten*100)/(5*$feedback->tstudent))/10,2)}} %</td>
                   <td>{{$feedback->tstudent}}</td>
-                  <td>{{($feedback->tone*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->ttwo*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tthree*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tfour*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tfive*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tsix*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tseven*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->teight*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tnine*100)/(5*$feedback->tstudent)}} %</td>
-                  <td>{{($feedback->tten*100)/(5*$feedback->tstudent)}} %</td>
+                  <td>{{round(($feedback->tone*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->ttwo*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tthree*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tfour*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tfive*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tsix*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tseven*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->teight*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tnine*100)/(5*$feedback->tstudent),2)}} %</td>
+                  <td>{{round(($feedback->tten*100)/(5*$feedback->tstudent),2)}} %</td>
 
                   
                

@@ -22,6 +22,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/admin_send_password', [App\Http\Controllers\HomeController::class, 'admin_send_password'])->name('admin_send_password');
 
+Route::get('/mypassowrd_reset/{type}', [App\Http\Controllers\HomeController::class, 'mypassowrd_reset'])->name('mypassowrd_reset');
+
+
 
 Route::post('/admin_login_submit', [App\Http\Controllers\Admin\AdminController::class, 'admin_login_submit'])->name('admin_login_submit');
 

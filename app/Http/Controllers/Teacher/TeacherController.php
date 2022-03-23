@@ -105,6 +105,12 @@ class TeacherController extends Controller
 
    public function teacher_dash()
     {
+
+        $checkfeedback = DB::table('feedback')->where('teacherid',session('LoggedTeacher'))->first();
+
+        if ($checkfeedback ) {
+           
+       
         if (isset($_GET['batch'])) {
             $checkdata = DB::table('feedback')->where('teacherid',session('LoggedTeacher'))
             ->where('batch',$_GET["batch"])->first();
@@ -119,6 +125,7 @@ class TeacherController extends Controller
             }
             
         }else{
+            $checkfeedback = DB::table('feedback')->where('teacherid',session('LoggedTeacher'))->first();
             $feedbackdata = DB::table('feedback')
             ->select('feedback.*', DB::raw('SUM(one) as tone'), DB::raw('SUM(two) as ttwo'), DB::raw('SUM(three) as tthree'), DB::raw('SUM(four) as tfour'), DB::raw('SUM(five) as tfive'), DB::raw('SUM(six) as tsix'), DB::raw('SUM(seven) as tseven'), DB::raw('SUM(eight) as teight'), DB::raw('SUM(nine) as tnine'), DB::raw('SUM(ten) as tten'), DB::raw('count(*) as tstudent'))
             ->where('teacherid',session('LoggedTeacher'))
@@ -128,7 +135,12 @@ class TeacherController extends Controller
         $questiondata = DB::table('question')->orderBy('id','asc')->limit(10)->get();
         $teachers = DB::table('teacher_name')->where('id',session('LoggedTeacher'))->get();
          $batchdata = DB::table('batch')->orderBy('id','asc')->get();
-      return view('teacher.teacher_dash',compact('feedbackdata','questiondata','teachers','batchdata')); 
+         $dataval = "1";
+         return view('teacher.teacher_dash',compact('feedbackdata','questiondata','teachers','batchdata','dataval')); 
+       }else{
+        $dataval = "0";
+         return view('teacher.teacher_dash',compact('dataval'));
+       }
         
     }
 

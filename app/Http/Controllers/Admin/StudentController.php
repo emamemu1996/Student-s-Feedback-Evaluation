@@ -142,6 +142,7 @@ class StudentController extends Controller
                 $admindata->department = $request->department;
                 $admindata->batch = $request->batch;
                 $admindata->phone = $request->phone;
+                $admindata->email = $request->email;
                 $admindata->shift = $request->shift;
                 $admindata->password = Hash::make($request->password);
 

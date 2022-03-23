@@ -88,7 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 						<li>
-							<a href="{{route('faculty_page.index')}}"><i class="fa fa-user nav_icon"></i>Faculty Page</a>
+							<a href="{{route('faculty_page.index')}}"><i class="fa fa-user nav_icon"></i>Department of chairman</a>
 						</li>
 
 

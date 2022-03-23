@@ -14,7 +14,7 @@
      
           <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
             <div class="form-title">
-              <h4>View User:</h4>
+              <h4>Student Page</h4>
             </div>
 
 
@@ -214,6 +214,13 @@
 
              </div> 
 
+
+             <div class="form-group">
+              <label for="title1">email</label>
+             <input type="email" class="form-control" id="email" name="email" value="" placeholder="email"> 
+
+             </div> 
+
               <div class="form-group">
               <label for="title1">shift</label>
              <select name="shift" class="form-control">
@@ -232,12 +239,12 @@
 
            <div class="form-group">
               <label for="title1">Password</label>
-             <input type="password" class="form-control" id="password" name="password" maxlength="12" value="" placeholder="password"> 
+             <input type="password" class="form-control" id="password" name="password" minlength="4" value="" placeholder="password"> 
 
           </div>
            <div class="form-group">
               <label for="title1">Confirm Password</label>
-             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" maxlength="50" value="" placeholder="Confirm Password"> 
+             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" minlength="4" value="" placeholder="Confirm Password"> 
 
           </div>
 

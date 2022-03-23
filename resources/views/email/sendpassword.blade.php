@@ -5,15 +5,13 @@
 </head>
 <body>
 
-    <h1>Dear Admin</h1>
+    <h1>Dear ! {{$reply['name']}}</h1>
 
-	
+	Welcome to Student’s Feedback Evaluation . 
 
 
-    <h3> {{$reply['sender']}}</h3>
-    <p>subject: {{$reply['subject']}}</p>
-    <br>
-    <p>{{$reply['des']}}</p>
+
+    
 
 
 

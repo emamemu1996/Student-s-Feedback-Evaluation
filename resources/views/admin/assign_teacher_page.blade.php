@@ -14,7 +14,7 @@
      
           <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
             <div class="form-title">
-              <h4>View User:</h4>
+              <h4>Assign teacher</h4>
             </div>
 
 
@@ -201,15 +201,21 @@
             
 
               <div class="form-group">
-              <label for="title1">shift</label>
+              <label for="title1">Semester</label>
              <select name="shift" class="form-control">
-              <option value="">Select shift</option>
-              @foreach($shiftdata as $shif)
-
-              <option value="{{$shif->shiftname}}">{{$shif->shiftname}}</option>
-               
-
-               @endforeach
+              <option value="">Select Semester</option>
+              <option value="First semester">First semester</option>
+              <option value="Second semester">Second semester</option>
+              <option value="Third semester">Third semester</option>
+              <option value="Fourth semester">Fourth semester</option>
+              <option value="Fiveth semester">Fiveth semester</option>
+              <option value="Sixth semester">Sixth semester</option>
+              <option value="Seventh semester">Seventh semester</option>
+              <option value="Eightth semester">Eightth semester</option>
+              <option value="Nineth semester">Nineth semester</option>
+              <option value="Ten semester">Ten semester</option>
+              <option value="Eleven semester">Eleven semester</option>
+              <option value="twelve semester">twelve semester</option>
              </select> 
 
              </div>

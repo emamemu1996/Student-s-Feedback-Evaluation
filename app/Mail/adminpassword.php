@@ -28,7 +28,7 @@ class adminpassword extends Mailable
      */
     public function build()
     {
-       return $this->subject('Reply Form Tablige Quran')
+       return $this->subject('Password Reset')
                     ->view('email/sendpassword')->with('admindata', $this->reply);
     }
 }

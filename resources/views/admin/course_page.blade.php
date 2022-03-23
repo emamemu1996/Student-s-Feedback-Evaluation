@@ -12,7 +12,7 @@
      
           <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
             <div class="form-title">
-              <h4>View User:</h4>
+              <h4>Course page</h4>
             </div>
 
 
