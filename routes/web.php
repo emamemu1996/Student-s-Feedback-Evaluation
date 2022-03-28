@@ -20,7 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::post('/admin_send_password', [App\Http\Controllers\HomeController::class, 'admin_send_password'])->name('admin_send_password');
+
+Route::get('/password_change/{type}/{token}', [App\Http\Controllers\HomeController::class, 'password_change'])->name('password_change');
+
+Route::post('/password_change_submit', [App\Http\Controllers\HomeController::class, 'password_change_submit'])->name('password_change_submit');
 
 Route::get('/mypassowrd_reset/{type}', [App\Http\Controllers\HomeController::class, 'mypassowrd_reset'])->name('mypassowrd_reset');
 

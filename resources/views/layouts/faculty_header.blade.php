@@ -11,14 +11,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+     <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet"> 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+  <script src="{{asset('admin/js/jquery-1.11.1.min.js')}}"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">

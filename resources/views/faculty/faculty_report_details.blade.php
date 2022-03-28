@@ -85,7 +85,7 @@
   <br>
           
     <div class="table-responsive">
-      <table id="customers">
+      <table class="tablemanager">
     <thead>
       <tr>
          
@@ -191,3 +191,13 @@
     </div>
 </div>
 @endsection
+
+
+
+
+
+
+
+
+
+         
