@@ -33,6 +33,7 @@ class Feedback extends Migration
             $table->string('nine');
             $table->string('ten');
             $table->string('status')->default(0);
+            $table->string('comment')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

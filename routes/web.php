@@ -79,6 +79,7 @@ Route::get('faculty_login', [App\Http\Controllers\Faculty\FacultyController::cla
 Route::get('faculty_profile', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_profile'])->name('faculty_profile');
  Route::post('faculty_profile_update', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_profile_update'])->name('faculty_profile_update');
   Route::get('faculty_report_details/{tid}', [App\Http\Controllers\Faculty\FacultyController::class, 'faculty_report_details'])->name('faculty_report_details');
+  Route::get('report_pdf', [App\Http\Controllers\Faculty\FacultyController::class, 'report_pdf'])->name('report_pdf');
 
 
 });

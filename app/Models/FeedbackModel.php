@@ -27,5 +27,7 @@ class FeedbackModel extends Model
         'eight',
         'nine',
         'ten',
-        'status'];
+        'status',
+        'comment',
+      ];
 }

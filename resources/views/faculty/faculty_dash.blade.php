@@ -60,6 +60,7 @@
 
   <br>
   <br>
+  <a href="{{route('report_pdf')}}" target="__BLANK" class="btn btn-info" style="margin:10px;"> <i class="fa fa-download"></i> </a>
           
     <div class="table-responsive">
       <table id="customers" class="tablemanager">
@@ -203,7 +204,7 @@
     voc_show_rows: 'Rows Per Page'
   },
       pagination: true,
-      showrows: [5,10,20,50,100],
+      showrows: [20,30,40,50,100],
       disableFilterBy: [1]
     });
     // $('.tablemanager').tablemanager();
@@ -247,5 +248,9 @@ try {
 </div>
     </div>
 </div>
+
+
+</body>
+</html>
 @endsection
 

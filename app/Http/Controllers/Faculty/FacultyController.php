@@ -8,6 +8,7 @@ use App\Models\FacultyModel;
 use App\Models\Assign_faculty_Model;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use PDF;
 
 class FacultyController extends Controller
 {
@@ -119,6 +120,25 @@ class FacultyController extends Controller
 
 
 
+public function report_pdf(Request $request)
+    {
+        $feedbackdata = DB::table('teacher_name')
+            ->join('feedback', 'feedback.teacherid', '=', 'teacher_name.id')
+            ->select('feedback.*','teacher_name.name as tname','teacher_name.id as tid', DB::raw('SUM(feedback.one) as tone'), DB::raw('SUM(feedback.two) as ttwo'), DB::raw('SUM(feedback.three) as tthree'), DB::raw('SUM(feedback.four) as tfour'), DB::raw('SUM(feedback.five) as tfive'), DB::raw('SUM(feedback.six) as tsix'), DB::raw('SUM(feedback.seven) as tseven'), DB::raw('SUM(feedback.eight) as teight'), DB::raw('SUM(feedback.nine) as tnine'), DB::raw('SUM(feedback.ten) as tten'), DB::raw('count(*) as tstudent'))
+            ->where('feedback.faculty',session('LoggedFaculty'))
+            ->groupBy('feedback.teacherid')
+            ->get();
+        $questiondata = DB::table('question')->orderBy('id','asc')->limit(10)->get();
+       
+        $pdf = PDF::loadView('faculty/report_pdf', compact('feedbackdata','questiondata'));
+        
+                 return $pdf->stream('feeback.pdf');
+        
+       
+      
+       
+      
+    }
 
 
 

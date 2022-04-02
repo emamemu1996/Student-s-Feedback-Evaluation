@@ -18,7 +18,7 @@ class Student_LoginController extends Controller
     {
       $data = DB::table('students')->where('id','=',session('LoggedStudent'))->first();
       $assignteacher = DB::table('assign_teacher')->join('teacher_name', 'teacher_name.id', '=', 'assign_teacher.teacherid')
-        ->select('teacher_name.name as tname','teacher_name.id as tid','assign_teacher.*')->where('batch','=',$data->batch)->paginate(30);
+        ->select('teacher_name.name as tname','teacher_name.id as tid','assign_teacher.*')->where('batch','=',$data->batch)->get();
     $checkstudent = DB::table('students')->where('id','=',session('LoggedStudent'))->first();
       return view('student/student_dash',compact('assignteacher','checkstudent')); 
         

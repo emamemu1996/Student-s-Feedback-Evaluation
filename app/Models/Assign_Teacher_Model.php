@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assign_Teacher_Model extends Model
 {
-    use HasFactory;
+      use HasFactory;
       protected $table = 'assign_teacher';
       protected $fillable = [
         'teacherid',
@@ -16,5 +16,7 @@ class Assign_Teacher_Model extends Model
         'batch',
         'shift',
         'course',
-        'status'];
+        'status',
+        'session',
+      ];
 }

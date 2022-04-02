@@ -10,7 +10,6 @@
     <title>Faculty ! Student’s Feedback Evaluation</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
      <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet"> 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

@@ -127,7 +127,7 @@ class StudentController extends Controller
                  return response()->json([
                    'message'   => 'Password didnot match..',
                     ]);
-            }elseif ($request->password<5) {
+            }elseif ($request->password<8) {
                  return response()->json([
                    'message'   => 'Minimum password Lentgh 5 character',
                     ]);

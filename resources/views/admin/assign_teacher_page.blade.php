@@ -43,15 +43,33 @@
 
 <div class="panel-body widget-shadow">
           
+    <style type="text/css">
+  #numrows{
+    width: 100px;
+  } 
+  #filter_by{
+    width: 150px;
+    float: right;
+    margin-bottom: 5px;
+  }
+  #filter_input{
+    margin-bottom: 5px;
+  }
+</style>
+
+  <br>
+  <br>
+          
     <div class="table-responsive">
-     
-    <table id="customers">
+      <table id="customers" class="tablemanager">
+        
     <thead>
       <tr>
          <th>Serial</th>
          <th>Name</th>
          <th>department</th>
          <th>batch</th>
+         <th>session</th>
          <th>shift</th>
          <th>course</th>
           <th>Status</th>
@@ -70,6 +88,7 @@
                   <td>{{$user->tname}}</td>
                   <td>{{$user->department}}</td>
                   <td>{{$user->batch}}</td>
+                  <td>{{$user->session}}</td>
                   <td>{{$user->shift}}</td>
                   <td>{{$user->course}}</td>
                   <td><?php 
@@ -231,6 +250,17 @@
                
 
                @endforeach
+             </select> 
+
+             </div>
+
+             <div class="form-group">
+              <label for="title1">Session</label>
+             <select name="session" class="form-control">
+              <option value="">Select Session</option>
+              <option value="summer"> summer </option>
+              <option value="spring">spring </option>
+              <option value="winter">winter </option>
              </select> 
 
              </div>

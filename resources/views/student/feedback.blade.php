@@ -53,7 +53,8 @@
 
            <div class="form-group">
             <label>{{$question->id}}.{{$question->questionname}}</label>
-            <select class="form-control" name="rank{{$question->id}}">
+            <select class="form-control" name="rank{{$question->id}}" required>
+                <option value="">Select Rating</option>
                 <option value="1">Weak</option>
                 <option value="2">Good</option>
                 <option value="3">Avarage</option>
@@ -74,7 +75,11 @@
           
 
 
-           
+            <div class="form-group">
+                <label>Comment</label>
+                <textarea cols="4" rows="4" class="form-control" name="comment"></textarea>
+
+            </div>
 
            
 

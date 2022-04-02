@@ -85,7 +85,7 @@
   <br>
           
     <div class="table-responsive">
-      <table class="tablemanager">
+      <table id="customers" class="tablemanager">
     <thead>
       <tr>
          

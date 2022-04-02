@@ -91,7 +91,7 @@ class Assign_Teacher_Controller extends Controller
 
          
 
-            if ($request->teacherid==""||$request->faculty==""||$request->department==""||$request->batch==""||$request->shift==""||$request->course=="") {
+            if ($request->teacherid==""||$request->faculty==""||$request->department==""||$request->batch==""||$request->shift==""||$request->course==""||$request->session=="") {
                  return response()->json([
                    'message'   => 'Field Must not empty !',
                     ]);
@@ -100,6 +100,7 @@ class Assign_Teacher_Controller extends Controller
 
                 $admindata = new Assign_Teacher_Model();
                 $admindata->teacherid = $request->teacherid;
+                $admindata->session = $request->session;
                 $admindata->faculty = $request->faculty;
                 $admindata->department = $request->department;
                 $admindata->batch = $request->batch;

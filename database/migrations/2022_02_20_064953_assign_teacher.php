@@ -22,6 +22,7 @@ class AssignTeacher extends Migration
             $table->string('shift');
             $table->string('course');
             $table->string('status')->default(0);
+            $table->string('session');
             $table->rememberToken();
             $table->timestamps();
         });
