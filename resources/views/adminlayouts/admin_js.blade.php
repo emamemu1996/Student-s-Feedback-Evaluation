@@ -63,7 +63,7 @@
     voc_show_rows: 'Rows Per Page'
   },
       pagination: true,
-      showrows: [5,10,20,50,100],
+      showrows: [20,30,40,50,100],
       disableFilterBy: [1]
     });
     // $('.tablemanager').tablemanager();

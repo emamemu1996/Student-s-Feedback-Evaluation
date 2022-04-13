@@ -127,7 +127,7 @@ class AdminController extends Controller
          return redirect()->route('admin_login');
      }
         
-    }
+     }
 
 
 
@@ -140,7 +140,12 @@ class AdminController extends Controller
      $shift = DB::table('shift')->count();
      $batch = DB::table('batch')->count();
      $course = DB::table('course')->count();
-      return view('admin.dashboard',compact('userinfo','students','teacher_name','faculty','shift','batch','course')); 
+      $users = DB::table('feedback')
+        ->join('teacher_name', 'teacher_name.id', '=', 'feedback.teacherid')
+        ->select('teacher_name.*','feedback.status as fstatus',DB::raw('SUM(feedback.status) as totalstatus'))
+        ->groupBy('feedback.teacherid')
+        ->orderBy('totalstatus','desc')->limit(10)->get();
+      return view('admin.dashboard',compact('userinfo','students','teacher_name','faculty','shift','batch','course','users')); 
         
     }
 
@@ -200,6 +205,22 @@ class AdminController extends Controller
       return view('admin.all_question_report',compact('feedbackdata','questiondata')); 
         
     }
+
+
+
+
+    public function admin_comment()
+    {
+       $feedbackdata = DB::table('students')
+            ->join('feedback', 'feedback.studentid', '=', 'students.id')
+            ->select('feedback.*','students.name as names')
+            ->orderBy("feedback.id","desc")
+            ->where("feedback.comment","!=",null)
+            ->get();
+      return view('admin.comment',compact('feedbackdata')); 
+        
+    }
+
 
 
 public function admin_profile()

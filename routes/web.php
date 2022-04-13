@@ -118,4 +118,5 @@ Route::group(['middleware'=>['adminauth']], function(){
        Route::get('admin_report', [App\Http\Controllers\Admin\AdminController::class, 'admin_report'])->name('admin_report');
        Route::get('report_details/{tid}', [App\Http\Controllers\Admin\AdminController::class, 'report_details'])->name('report_details');
        Route::get('all_question_report', [App\Http\Controllers\Admin\AdminController::class, 'all_question_report'])->name('all_question_report');
+       Route::get('admin_comment', [App\Http\Controllers\Admin\AdminController::class, 'admin_comment'])->name('admin_comment');
 });

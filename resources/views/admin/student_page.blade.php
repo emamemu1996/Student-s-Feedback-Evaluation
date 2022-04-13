@@ -46,8 +46,25 @@
    <br>
  
           
+  <style type="text/css">
+  #numrows{
+    width: 100px;
+  } 
+  #filter_by{
+    width: 150px;
+    float: right;
+    margin-bottom: 5px;
+  }
+  #filter_input{
+    margin-bottom: 5px;
+  }
+</style>
+
+  <br>
+  <br>
+          
     <div class="table-responsive">
-      <table id="customers">
+      <table id="customers" class="tablemanager">
     <thead>
       <tr>
          <th>Serial</th>

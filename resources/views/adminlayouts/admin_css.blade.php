@@ -131,6 +131,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li>
 							<a href="{{route('all_question_report')}}"><i class="fa fa-bookmark nav_icon"></i>Question Report</a>
 						</li>
+
+						<li>
+							<a href="{{route('admin_comment')}}"><i class="fa fa-bookmark nav_icon"></i>Comment</a>
+						</li>
 						
 
 

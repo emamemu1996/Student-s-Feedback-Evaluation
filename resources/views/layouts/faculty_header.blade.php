@@ -10,6 +10,7 @@
     <title>Faculty ! Student’s Feedback Evaluation</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
      <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet"> 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -44,28 +45,27 @@
                            
 
                       
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          
+                                <a class="nav-link" href="#" role="button">
                                     {{ $data->name }}
                                 </a> 
 
                              
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                               
 
 
-                         <a href="{{ route('faculty_profile') }}"></i> 
-                                        profile  </a> 
+                         <a class="nav-link" href="{{ route('faculty_profile') }}"></i> profile  </a> 
 
-                                        <br>
+                                        
 
 
-                         <a href="{{ route('faculty_logout') }}"> <i class="fa fa-cog"></i> 
+                         <a class="nav-link" role="button" href="{{ route('faculty_logout') }}"> <i class="fa fa-cog"></i> 
                                         {{ __('Logout') }}  </a>
 
                                  
                                 </div>
-                            </li>
+                            
                        
 
 

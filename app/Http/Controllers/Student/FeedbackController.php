@@ -50,6 +50,7 @@ class FeedbackController extends Controller
                 $admindata->nine = $request->rank9;
                 $admindata->ten = $request->rank10;
                 $admindata->comment = $request->comment;
+                $admindata->status = $request->rank1+$request->rank2+$request->rank3+$request->rank4+$request->rank5+$request->rank6+$request->rank7+$request->rank8+$request->rank9+$request->rank10;
 
                 $submitfeedback =$admindata->save(); 
                 if ($submitfeedback) {

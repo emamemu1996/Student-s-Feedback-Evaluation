@@ -98,17 +98,53 @@
 
 
           
-      </div>
+      
+
+
+
+<div class="table-responsive">
+  <p align="center">Top 10 Teachers</p>
+      <table id="customers">
+    <thead>
+      <tr>
+         <th>Serial</th>
+         <th>Name</th>
+         <th>Rating</th>
+         
+      </tr>
+    </thead>
+       <tbody>
+           @php 
+              $i=1;
+              @endphp
+                    @foreach($users as $user)
+                     
+                <tr>
+                  <td>{{$i++}}</td>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->fstatus}}</td>
+
+                  
+                 
+                
+                  
+                </tr>
+              
+
+                @endforeach
+
+       </tbody>
+
+
+   </table>  
+           
+</div>
+
+
+
+
+</div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
 

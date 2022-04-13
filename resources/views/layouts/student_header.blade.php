@@ -10,7 +10,7 @@
     <title>Student ! Student’s Feedback Evaluation</title>
 
     <!-- Scripts -->
-    
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
